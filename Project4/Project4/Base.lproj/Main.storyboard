@@ -764,7 +764,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <action selector="urlEntered:" target="Oky-zY-oP4" id="G4h-yz-cns"/>
+                                            <action selector="urlEntered:" target="Oky-zY-oP4" id="PHa-d8-29y"/>
                                         </connections>
                                     </textField>
                                 </toolbarItem>
@@ -810,10 +810,11 @@
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="Hfr-nz-1Mm"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="urlAddressTextField" destination="ezd-2k-Y1u" id="cxt-w9-QbR"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>

@@ -10,13 +10,11 @@ import Cocoa
 
 class WindowController: NSWindowController {
     
-    @IBOutlet private var urlTextField: NSTextField!
+    @IBOutlet private(set) var urlAddressTextField: NSTextField!
     
-
-    override func windowDidLoad() {
-        super.windowDidLoad()
     
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    override func cancelOperation(_ sender: Any?) {
+        window?.makeFirstResponder(contentViewController)
     }
     
 }
