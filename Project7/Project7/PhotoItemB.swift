@@ -1,15 +1,17 @@
 //
-//  PhotoItem.swift
+//  PhotoItemB.swift
 //  Project7
 //
-//  Created by Claudio Carnino on 17/12/2017.
+//  Created by Claudio Carnino on 21/12/2017.
 //  Copyright © 2017 Tugulab. All rights reserved.
 //
 
 import Cocoa
 
 
-class PhotoItem: NSCollectionViewItem {
+class PhotoItemB: NSCollectionViewItem {
+    
+    static let itemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "PhotoItemB")
     
     private let selectedBorderWidth: CGFloat = 3
     
@@ -30,12 +32,6 @@ class PhotoItem: NSCollectionViewItem {
                 break
             }
         }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
     }
     
 }

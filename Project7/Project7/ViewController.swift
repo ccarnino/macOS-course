@@ -13,14 +13,37 @@ class ViewController: NSViewController {
     
     @IBOutlet private var collectionView: NSCollectionView!
     
-    private let itemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "Photo")
+    private lazy var photosDirectoryURL: URL = {
+        let fileManager = FileManager.default
+        guard let documentDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError()
+        }
+        let photosDirectoryURL = documentDirectoryURL.appendingPathComponent("SlideMark")
+        let isPhotosDirectoryExisting = fileManager.fileExists(atPath: photosDirectoryURL.path)
+        if !isPhotosDirectoryExisting {
+            try? fileManager.createDirectory(at: photosDirectoryURL, withIntermediateDirectories: true)
+        }
+        return photosDirectoryURL
+    }()
+    
+    private var photosURLs: [URL] = []
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.register(PhotoItem.self, forItemWithIdentifier: itemIdentifier)
+        loadPhotos()
+    }
+    
+    
+    private func loadPhotos() {
+        let fileManager = FileManager.default
+        guard let files = try? fileManager.contentsOfDirectory(atPath: photosDirectoryURL.path) else {
+            photosURLs = []
+            return
+        }
+        let validExtensions = ["jpg", "jpeg", "png"]
+        let validPhotosURLs = files.flatMap { URL(string: $0) } .filter { validExtensions.contains($0.pathExtension.lowercased()) }
+        photosURLs = validPhotosURLs
     }
     
 }
@@ -29,17 +52,16 @@ class ViewController: NSViewController {
 extension ViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return photosURLs.count
     }
     
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: itemIdentifier, for: indexPath)
-        guard let photoItem = item as? PhotoItem else { return item }
-        
-        photoItem.view.wantsLayer = true
-        photoItem.view.layer?.backgroundColor = NSColor.red.cgColor
-        
+        let item = collectionView.makeItem(withIdentifier: PhotoItemB.itemIdentifier, for: indexPath)
+        guard let photoItem = item as? PhotoItemB else { return item }
+//        photoItem.view.wantsLayer = true
+//        photoItem.view.layer?.backgroundColor = NSColor.red.cgColor
+        photoItem.imageView?.image = NSImage(contentsOf: photosURLs[indexPath.item])
         return photoItem
     }
     

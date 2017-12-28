@@ -5,8 +5,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner">
+        <customObject id="-2" userLabel="File's Owner" customClass="PhotoItemB" customModule="Project7" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="TQ9-9a-SY0" id="3P2-gD-2uU"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -16,22 +17,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRq-Lq-jHe">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-9a-SY0">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wpg-xT-eXM"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="M1P-di-cyn"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="wRq-Lq-jHe" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="1IA-Tz-amq"/>
-                <constraint firstAttribute="trailing" secondItem="wRq-Lq-jHe" secondAttribute="trailing" id="BRP-ns-ycT"/>
-                <constraint firstItem="wRq-Lq-jHe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="T5U-U2-SCD"/>
-                <constraint firstAttribute="bottom" secondItem="wRq-Lq-jHe" secondAttribute="bottom" id="XK9-vV-JXr"/>
+                <constraint firstAttribute="trailing" secondItem="TQ9-9a-SY0" secondAttribute="trailing" id="0gZ-qT-2VW"/>
+                <constraint firstItem="TQ9-9a-SY0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="7Nl-7F-fWA"/>
+                <constraint firstItem="TQ9-9a-SY0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="P7W-Qf-nPY"/>
+                <constraint firstAttribute="bottom" secondItem="TQ9-9a-SY0" secondAttribute="bottom" id="g1H-YS-pfc"/>
             </constraints>
         </customView>
-        <collectionViewItem id="i3M-5n-6Um" customClass="PhotoItem" customModule="Project7" customModuleProvider="target">
-            <connections>
-                <outlet property="imageView" destination="wRq-Lq-jHe" id="rH6-Nw-7yE"/>
-            </connections>
-        </collectionViewItem>
+        <collectionViewItem id="PzI-2I-sv6" customClass="PhotoItemB" customModule="Project7" customModuleProvider="target"/>
     </objects>
 </document>
